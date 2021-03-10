@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  app:   #name of service
+    build:
+      context: . # current directory
+    ports:
+      - "8000:8000"  # port on host to docker post
+    volumes:
+      - ./app:/app  # map app directory to app docker image
+    command: >  # run the command using shell 0 means all ip address on port 8000
+      sh -c "python manage.py runserver 0.0.0.0:8000"
